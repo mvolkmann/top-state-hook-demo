@@ -1,5 +1,5 @@
 import React from 'react';
-import {refreshState} from 'top-state-hook';
+import {refreshState, setOptions} from 'top-state-hook';
 
 import Counter from './counter';
 import FormDemo from './form-demo';
@@ -8,7 +8,7 @@ import TodoList from './todo-list/todo-list';
 
 import './App.scss';
 
-//setOptions({});
+setOptions({log: true, persist: true});
 
 export default function App() {
   refreshState();
