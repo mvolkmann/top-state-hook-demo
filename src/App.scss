@@ -29,6 +29,10 @@ button {
   border-color: red;
 }
 
+.counter button {
+  margin: 10px;
+}
+
 div {
   margin-bottom: $space;
 }
@@ -45,10 +49,6 @@ input {
 input[type='checkbox'],
 input[type='radio'] {
   vertical-align: -2px;
-}
-
-.score button {
-  margin: 10px;
 }
 
 select {

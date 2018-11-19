@@ -2,14 +2,14 @@ import React from 'react';
 import {useTopState} from 'top-state-hook';
 
 export default function Counter() {
-  const [count, countUpdate] = useTopState('count', 0);
+  const [count, setCount] = useTopState('count', 0);
   return (
-    <div>
-      <button onClick={() => countUpdate.decrement()} disabled={count === 0}>
+    <div className="counter">
+      <button onClick={() => setCount(count - 1)} disabled={count === 0}>
         -
       </button>
       {count}
-      <button onClick={() => countUpdate.increment()}>+</button>
+      <button onClick={() => setCount(count + 1)}>+</button>
     </div>
   );
 }

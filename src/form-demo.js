@@ -21,7 +21,6 @@ const radioButtonList = [
 ];
 
 export default function FormDemo() {
-  const [score, scoreUpdate] = useTopState('score', 10);
   return (
     <div>
       <label htmlFor="firstName">
@@ -49,12 +48,6 @@ export default function FormDemo() {
           name="feedback.comment"
           placeholder="enter your comment here"
         />
-      </label>
-      <label className="block score" htmlFor="score">
-        Score
-        <button onClick={() => scoreUpdate.decrement()}>-</button>
-        {score}
-        <button onClick={() => scoreUpdate.increment()}>+</button>
       </label>
     </div>
   );

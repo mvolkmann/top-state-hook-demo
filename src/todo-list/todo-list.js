@@ -4,31 +4,32 @@ import {useTopState} from 'top-state-hook';
 import './todo-list.scss';
 
 export default function TodoList() {
-  const [nextId, nextIdUpdate] = useTopState('nextId', 0);
-  const [todoText, todoTextUpdate] = useTopState('todoText', '');
-  const [todos, todosUpdate] = useTopState('todos', []);
+  const [nextId, setNextId] = useTopState('nextId', 0);
+  const [todoText, setTodoText] = useTopState('todoText', '');
+  const [todos, setTodos] = useTopState('todos', []);
+  console.log('todo-list.js x: todos =', todos);
 
   function addTodo() {
     const todo = {id: nextId, text: todoText, done: false};
-    todosUpdate.push(todo);
-    todoTextUpdate.set('');
-    nextIdUpdate.increment();
+    setTodos(todos.concat([todo]));
+    setTodoText('');
+    setNextId(nextId + 1);
   }
 
   function deleteTodo(id) {
-    todosUpdate.filter(todo => todo.id !== id);
+    setTodos(todos.filter(todo => todo.id !== id));
   }
 
   function toggleDone(id) {
-    todosUpdate.map(todo =>
-      todo.id === id ? {...todo, done: !todo.done} : todo
+    setTodos(
+      todos.map(todo => (todo.id === id ? {...todo, done: !todo.done} : todo))
     );
   }
 
   const handleAdd = useCallback(() => addTodo());
   const handleDelete = useCallback(id => deleteTodo(id));
   const handleSubmit = useCallback(e => e.preventDefault()); // prevents form submit
-  const handleText = useCallback(e => todoTextUpdate.set(e.target.value));
+  const handleText = useCallback(e => setTodoText(e.target.value));
   const handleToggleDone = useCallback(id => toggleDone(id));
 
   return (
