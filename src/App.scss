@@ -1,0 +1,64 @@
+$space: 6px;
+$border-radius: $space;
+$padding: $space;
+
+@mixin common() {
+  border: solid lightgray 1px;
+  border-radius: $border-radius;
+  padding: $padding;
+}
+
+.block {
+  display: block;
+}
+
+body {
+  font-family: sans-serif;
+  font-size: 14px;
+  margin: $space;
+}
+
+button {
+  @include common();
+  //font-size: 24px;
+}
+
+.checkboxes,
+.radio-buttons {
+  @include common();
+  border-color: red;
+}
+
+div {
+  margin-bottom: $space;
+}
+div:last-child {
+  margin-bottom: 0;
+}
+
+input {
+  @include common();
+  margin-left: $space;
+  margin-right: $space;
+}
+
+input[type='checkbox'],
+input[type='radio'] {
+  vertical-align: -2px;
+}
+
+.score button {
+  margin: 10px;
+}
+
+select {
+  @include common();
+  margin-left: $space;
+}
+
+textarea {
+  @include common();
+  display: block;
+  margin-top: 5px;
+  width: calc(100% - #{$space} * 2);
+}
