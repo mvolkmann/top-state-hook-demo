@@ -7,7 +7,6 @@ export default function TodoList() {
   const [nextId, setNextId] = useTopState('nextId', 0);
   const [todoText, setTodoText] = useTopState('todoText', '');
   const [todos, setTodos] = useTopState('todos', []);
-  console.log('todo-list.js x: todos =', todos);
 
   function addTodo() {
     const todo = {id: nextId, text: todoText, done: false};
